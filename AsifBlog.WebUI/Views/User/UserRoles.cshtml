@@ -1,0 +1,42 @@
+﻿@model List<AsifBlog.Model.UserRole>
+@{
+    ViewData["Title"] = "UserRoles";
+}
+<br /><br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <table class="table table-dark table-bordered table-hover table-striped text-center">
+                    <tr>
+                        <th colspan="3"> <h3 class="text-center">User Roles</h3></th>
+                    </tr>
+                <tr>
+                    <th colspan="3">  <a class="btn btn-success" asp-controller="User" asp-action="AddUpdateUserRole">Add New</a></th>
+                </tr>
+                    <tr>
+                        <th>#sr</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    @{
+                    int i = 0;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                            <td>@Convert.ToInt32(i++)</td>
+                                <td>@item.Name</td>
+                                <td>
+                                <a class="btn btn-success" asp-controller="User" asp-action="AddUpdateUserRole"asp-route-Id="@item.Id">Edit</a>&nbsp;|
+                                <a class="btn btn-success" asp-controller="User" asp-action="DeleteRole"asp-route-Id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        <div class="col-md-2"></div>
+        
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model List<AsifBlog.Model.ReactionType>
+@{
+    ViewData["Title"] = "ReactionType";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-dark table-bordered table-hover table-striped text-center">
+                <tr>
+                    <th colspan="5"> <h3 class="text-center">ReactionType</h3></th>
+                </tr>
+                <tr>
+                    <th colspan="5">  <a class="btn btn-success" asp-controller="Post" asp-action="AdUpateReactionType">Add New</a></th>
+                </tr>
+                <tr>
+                    <th>#sr</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                @{
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Convert.ToInt32(i++)</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <a class="btn btn-success" asp-controller="Post" asp-action="AdUpateReactionType" asp-route-Id="@item.Id">Edit</a>&nbsp;|
+                                <a class="btn btn-success" asp-controller="Post" asp-action="DeleteReactionTypen " asp-route-Id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+

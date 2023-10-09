@@ -1,0 +1,48 @@
+﻿@model AsifBlog.Model.Post
+@{
+    ViewData["Title"] = "Updatepost";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 border border-success">
+            <br />
+            <h4 class="text-success text-center">UpdatePost</h4>
+            <form asp-controller="Post" asp-action="Updatepost" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Enter Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <br />
+                <label asp-for="shortDescription">Short Description</label>
+                <input asp-for="shortDescription" class="form-control" placeholder="Enter Short Discription" />
+                <span asp-validation-for="shortDescription" class="text-danger"></span>
+                <br />
+                <label asp-for="description">Description</label>
+                <input asp-for="description" class="form-control" placeholder="Enter Description" />
+                <span asp-validation-for="description" class="text-danger"></span>
+                <br />
+                <label asp-for="img">IMG</label>
+                <input asp-for="img" class="form-control" placeholder="Enter" />
+                <span asp-validation-for="img" class="text-danger"></span>
+                <br />
+                <label asp-for="PostStatusId"></label>
+                <select asp-for="PostStatusId" asp-items="@ViewBag.poststatus" class="form-control"></select>
+                <span asp-validation-for="PostStatusId" class="text-danger"></span>
+                <br />
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-control"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                <br />
+                <label asp-for="UserId"></label>
+                <input asp-for="UserId" class="form-control"/>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+                <br />
+                <button type="submit" class="btn btn-success">Update post</button>
+                <br />
+            </form>
+            <br />
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

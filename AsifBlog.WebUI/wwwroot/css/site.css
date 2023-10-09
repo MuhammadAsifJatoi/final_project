@@ -1,0 +1,36 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family:Poppins;
+    background-color:#5D5C61;
+}
+#Hero {
+    background: url(/img/T1.jpg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-position: top;
+    margin-top: -200px;
+    height: 940px;
+    
+}
+
+.herotext {
+    margin-top: 19%;
+    font-size: 50px;
+    font-weight: 700;
+}

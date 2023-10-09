@@ -1,0 +1,23 @@
+﻿@model AsifBlog.Model.PostStatus
+@{
+    ViewData["Title"] = "AddupdatePostStatus";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 border border-success border-5">
+            <br />
+            <h4 class="text-success text-center">Addupdate PostStatus</h4>
+            <form asp-controller="Post" asp-action="AddupdatePostStatus" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter PostStatus Name " />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <br />
+                <button type="submit" class="btn btn-success">Add new</button>
+            </form>
+            <br />
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

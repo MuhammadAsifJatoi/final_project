@@ -1,0 +1,23 @@
+﻿@model AsifBlog.Model.Category
+@{
+    ViewData["Title"] = "AddupdateCategory";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 border border-success border-5">
+            <br />
+            <h4 class="text-success text-center">AddUpdate Category</h4>
+            <form asp-controller="Post" asp-action="AddupdateCategory"method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter Name Category" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <br />
+                <button type="submit" class="btn btn-success">Addnew</button>
+            </form>
+            <br />
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

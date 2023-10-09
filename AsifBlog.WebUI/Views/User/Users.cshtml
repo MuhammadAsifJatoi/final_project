@@ -1,0 +1,52 @@
+﻿@model List<AsifBlog.Model.User>
+@{
+    ViewData["Title"] = "Users";
+}
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-12">
+            <table class="table table-dark table-bordered table-hover table-striped text-center">
+                <tr>
+                    <th colspan="8"> <h3 class="text-center">Users</h3></th>
+                </tr>
+                <tr>
+                    <th colspan="8">  <a class="btn btn-success" asp-controller="Account" asp-action="Register">Add New</a></th>
+                </tr>
+                <tr>
+                    <th>#sr</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>IS Confirmed</th>
+                    <th>Joined On</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+                @{
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Convert.ToInt32(i++)</td>
+                            <td>@item.Name</td>
+                            <td>@item.EmailAdress</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.IsConfirm</td>
+                            <td>@item.joinedon</td>
+                            <td>@item.userRole.Name</td>
+                            <td>
+                                <a class="btn btn-success" asp-controller="User" asp-action="AddUpdateUser" asp-route-Id="@item.Id">Edit</a>&nbsp;|
+                                <a class="btn btn-success" asp-controller="User" asp-action="DeleteUser" asp-route-Id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        
+
+    </div>
+</div>

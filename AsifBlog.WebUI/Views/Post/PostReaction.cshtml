@@ -1,0 +1,42 @@
+﻿@model List<AsifBlog.Model.PostReaction>
+@{
+    ViewData["Title"] = "PostReaction";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-dark table-bordered table-hover table-striped text-center">
+                <tr>
+                    <th colspan="5"> <h3 class="text-center">Post ReactionTupe</h3></th>
+                </tr>
+                <tr>
+                    <th colspan="5">  <a class="btn btn-success" asp-controller="Post" asp-action="CreatePostReactionType">Add New</a></th>
+                </tr>
+                <tr>
+                    <th>#sr</th>
+                    <th> post Title</th>
+                    <th>Reactio for post</th>
+                    <th> Reaction By</th>
+                    <th>Action</th>
+                </tr>
+                @{
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Convert.ToInt32(i++)</td>
+                            <td>@item.Post.Title</td>
+                            <td>@item.ReactionType.Name</td>
+                            <td>@item.User.Name</td>
+                            <td>
+                                <a class="btn btn-success" asp-controller="Post" asp-action="UpdatePostReactionType" asp-route-Id="@item.Id">Edit</a>&nbsp;|
+                                <a class="btn btn-success" asp-controller="Post" asp-action="DeletePostReactionType" asp-route-Id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+
+    </div>
+</div>

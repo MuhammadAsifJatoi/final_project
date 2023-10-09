@@ -1,0 +1,22 @@
+﻿@model AsifBlog.Model.UserRole
+@{
+    ViewData["Title"] = "AddUpdateUserRole";
+}
+<br /><br /><br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="border:3px solid green;padding:20px">
+            <form asp-controller="User" asp-action="AddUpdateUserRole" method="post" class="border-success">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <br />
+                <button type="submit" value="Login" class="btn btn-success">Addupdate</button>
+                @*<input type="submit"value="LOGIN" class="btn btn-success"/>*@
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
