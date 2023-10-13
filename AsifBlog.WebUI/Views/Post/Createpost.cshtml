@@ -19,7 +19,7 @@
         <div class="col-md-8 border border-success">
            <br />
             <h4 class="text-success text-center">Create New Post</h4>
-            <form asp-controller="Post" asp-action="Createpost" method="post">
+            <form asp-controller="Post" asp-action="Createpost"enctype="multipart/form-data" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <label asp-for="Title">Title</label>
                 <input asp-for="Title" class="form-control" placeholder="Enter Title" />
@@ -34,7 +34,7 @@
                 <span asp-validation-for="description" class="text-danger"></span>
                 <br />
                 <label asp-for="img">IMG</label>
-                <input asp-for="img" class="form-control" placeholder="Enter" />
+                <input asp-for="img" name="Postimg" type="file" class="form-control" placeholder="Upload Image" />
                 <span asp-validation-for="img" class="text-danger"></span>
                 <br />
                 <label asp-for="PostStatusId"></label>

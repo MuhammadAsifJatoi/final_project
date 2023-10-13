@@ -2,6 +2,7 @@
 using AsifBlog.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Drawing;
 
 namespace AsifBlog.WebUI.Controllers
 {
@@ -94,13 +95,64 @@ namespace AsifBlog.WebUI.Controllers
             return View(new Post());
         }
         [HttpPost]
-        public IActionResult Createpost(Post post)
+        public IActionResult Createpost(Post post,IFormFile Postimg)
         {
-            User user = new CommonController(_account).GetUser(HttpContext);
-            post.UserId = user.Id;
-            post.postedon=DateTime.UtcNow.AddDays(5);
-            _userPost.CreatePost(post);
-            return RedirectToAction("Getposts");
+            string imgpath = "";
+            var extenction = "";
+            IList<string> AllowfileExtension = new List<string> {".jpg",".jpeg",".png" };
+            int maxcontentLength = 1024 * 1024 * 10; // 10mb
+            if (Postimg != null && Postimg.Length>0)
+            {
+                extenction = Postimg.FileName.Substring(Postimg.FileName.LastIndexOf('.')).ToLower();
+                if (Postimg.Length>maxcontentLength)
+                {
+                    ViewBag.Error = "File Size must be Less then 10Mb";
+                }else if (!AllowfileExtension.Contains(extenction))
+                {
+                    ViewBag.Error = "Plese upload img of type .jpg,.jpeg,.png";
+                }
+                else
+                {
+                    string relativeimgpath=$"/images/posts/{post.Id}-{Path.GetFileNameWithoutExtension(Postimg.FileName)}-{DateTime.UtcNow.Ticks}.jpg";
+                    string absoluteimgpath = Path.Combine(Directory.GetCurrentDirectory(),$"wwwroot{relativeimgpath}");
+                    using (var stream = new FileStream(absoluteimgpath, FileMode.Create))
+                    {
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            Postimg.CopyTo(memoryStream);
+                            using(var img = Image.FromStream(memoryStream))
+                            {
+                             int width = img.Width;
+                             int height = img.Height;
+                                if (width >800 ||height>800)
+                                {
+                                    ViewBag.Error = "Plese upload img with dimension 700*500 or less";
+                                }
+                                else
+                                {
+                                    Postimg.CopyTo(stream);
+                                    post.img = relativeimgpath;
+                                    var user = new CommonController(_account).GetUser(HttpContext);
+                                    post.UserId = user.Id;
+                                    try
+                                    {
+                                        _userPost.CreatePost(post);
+                                        return RedirectToAction("Getposts");
+                                    }catch (Exception ex)
+                                    {
+                                        ViewBag.Error = "an error occurred while saving the post to the Database";
+                                        return View(post);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+           
+            return View();
+           
         }
         [HttpGet]
         public IActionResult Updatepost(int id = 0)
