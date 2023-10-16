@@ -42,6 +42,14 @@ namespace AsifBlog.Repository.Implementaion
             _db.Posts.Remove(post);
             _db.SaveChanges();
         }
+        public List<Post> GetActivePosts()
+        {
+            return _db.Posts.Where(x => x.PostStatus.Name.Equals("active")).ToList();
+        }
+        public List<Post> GetAuthorPost()
+        {
+            return _db.Posts.Where(x => x.User.UserRoleid == 2).ToList();
+        }
         //categories method
 
         public List<Category> GetCategories()

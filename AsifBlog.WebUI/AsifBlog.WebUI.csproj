@@ -21,4 +21,8 @@
     <ProjectReference Include="..\AsifBlog.Repository\AsifBlog.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\posts\" />
+  </ItemGroup>
+
 </Project>

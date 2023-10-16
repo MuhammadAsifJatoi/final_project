@@ -113,7 +113,7 @@ namespace AsifBlog.WebUI.Controllers
                 }
                 else
                 {
-                    string relativeimgpath=$"/images/posts/{post.Id}-{Path.GetFileNameWithoutExtension(Postimg.FileName)}-{DateTime.UtcNow.Ticks}.jpg";
+                    string relativeimgpath=$"/img/posts/{post.Id}-{Path.GetFileNameWithoutExtension(Postimg.FileName)}-{DateTime.UtcNow.Ticks}.jpg";
                     string absoluteimgpath = Path.Combine(Directory.GetCurrentDirectory(),$"wwwroot{relativeimgpath}");
                     using (var stream = new FileStream(absoluteimgpath, FileMode.Create))
                     {
@@ -124,7 +124,7 @@ namespace AsifBlog.WebUI.Controllers
                             {
                              int width = img.Width;
                              int height = img.Height;
-                                if (width >800 ||height>800)
+                                if (width >1500 ||height>1200)
                                 {
                                     ViewBag.Error = "Plese upload img with dimension 700*500 or less";
                                 }
@@ -167,7 +167,7 @@ namespace AsifBlog.WebUI.Controllers
             _userPost.UpdatePost(post);
             return RedirectToAction("Getposts");
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Deletepost(int id)
         {
             _userPost.DeletePost(id);

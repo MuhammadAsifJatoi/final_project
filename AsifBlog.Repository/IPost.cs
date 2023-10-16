@@ -20,6 +20,8 @@ namespace AsifBlog.Repository
         public Category GetCategory(int id);
         public void AddUpdateCategory(Category category);
         public void DeleteCategory(int id);
+        public List<Post> GetActivePosts();
+        public List<Post> GetAuthorPost();
         //post status
         public List<PostStatus> GetPostStatuses();
         public PostStatus GetPostStatus(int id);
