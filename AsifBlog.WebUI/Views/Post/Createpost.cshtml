@@ -13,12 +13,11 @@
 @{
     ViewData["Title"] = "Createpost";
 }
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 border border-success">
-           <br />
-            <h4 class="text-success text-center">Create New Post</h4>
+            <h4 class="text-success text-center mt-4">Create New Post</h4>
             <form asp-controller="Post" asp-action="Createpost"enctype="multipart/form-data" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <label asp-for="Title">Title</label>

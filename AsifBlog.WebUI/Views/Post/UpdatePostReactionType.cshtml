@@ -13,13 +13,13 @@
 @{
     ViewData["Title"] = "UpdatePostReactionType";
 }
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 border border-success">
             <br />
             <h4 class="text-success text-center">Update PostReaction</h4>
-            <form asp-controller="Post" asp-action="UpdatePostReactionType" method="post">
+            <form asp-controller="Post" asp-action="Update Post Reaction Type" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <label asp-for="PostId">Post Id</label>
                 <select asp-for="PostId" asp-items="@ViewBag.posts" class="form-select"></select>

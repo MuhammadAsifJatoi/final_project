@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="~/css/site.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/AsifBlog.WebUI.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
@@ -65,9 +66,12 @@
                                     Post
                                 </button>
                                 <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="">Post</a></li>
-                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="">Category</a></li>
-                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="">Category</a></li>
+                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="CreatePost">Post</a></li>
+                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="Categories">Categories</a></li>
+                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="Getposts">Active Post</a></li>
+                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="PostReaction">Reaction</a></li>
+                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="PostStatus">post Status</a></li>
+                                    <li><a class="dropdown-item text-success" asp-controller="Post" asp-action="ReactionType">Reaction Type</a></li>
                                 </ul>
                             </div>
                             <li class="nav-item">
@@ -85,12 +89,35 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - AsifBlog.WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+ 
+        <div class="container-fluid bg-dark text-white mt-5">
+            <div class="row text-center">
+                <div class="col-sm-4">
+                    <h3 class="text-success mt-4">Journey Journals</h3>
+                    <p class="mt-5 text-white-50">
+                        Join us on a journey of discovery as we traverse the globe<br /> to uncover the world's most
+                        extraordinary destinations Discover Pakistan's breathtaking beauty and rich cultural
+                        tapestry. Join us on a journey to explore the land of wonders
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="text-success mt-4">Blog</h3>
+                    <a asp-controller="Home" asp-action="Index" class="nav-link mt-5 text-white-50">Home</a>
+                <a asp-controller="Home" asp-action="Privacy" class="nav-link text-white-50">About</a>
+                <a asp-controller="Post" asp-action="Createpost" class="nav-link text-white-50">Post</a>
+                    </div>
+                <div class="col-sm-4">
+                    <h3 class="text-success mt-4">Contact</h3>
+                    <br /><br />
+                <span><a href="https://www.facebook.com/login/" class="nav-link"><i class="bi bi-facebook text-white-50" style="height:50px;width:50px"></i></a></span>
+                <span><a href="https://twitter.com/i/flow/login" class="nav-link "><i class="bi bi-twitter text-white-50" style="height:50px;width:50px"></i></a></span>
+                <span><a href="https://www.linkedin.com/login" class="nav-link "><i class="bi bi-linkedin text-white-50" style="height:50px;width:50px"></i></a></span>
+                <span><a href="https://www.instagram.com/accounts/login/" class="nav-link "><i class="bi bi-instagram text-white-50" style="height:50px;width:50px"></i></a></span>
+                </div>
+            </div>
+     
+        <p class="mt-5 "> &copy; 2023 - AsifBlog.WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">About</a></p>
         </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
